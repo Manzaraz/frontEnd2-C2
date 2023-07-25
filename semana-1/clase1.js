@@ -2,25 +2,26 @@
 /*                                  FUNCION 1                                 */
 /* -------------------------------------------------------------------------- */
 function iniciarJuego() {
+    // Saludamos al vistante
+    alert("Bienvenido al juego de Piedra, Pael o Tijera de Frontend 2.!");
+    // Guardar el nombre en una variable
+    const nombre = prompt("Su nombre");
 
-    // suludamos al usuario
-    alert("Bienvenido al piedra papel o tijera de Frontend II.");
-    // guardamos en una variable en nombre ingresado
-    const nombre = prompt("Ingese su nombre por favor:")
+    // alert("Hola " + nombre + ".")
+    alert(`¡Hola estimado: ${nombre}, Mucha suerte!`)
 
-    alert("Gracias por jugar " + nombre + ". ¡Mucha suerte!");
-
-    // mostramos los datos por consola
-    console.log("----------------------------");
-    console.log("El jugador es:")
+    // Mostramos los datos en consola
+    console.log("---------------------------");
+    console.log("El nombre del jugador es: ");
     console.log(nombre);
-    console.log("----------------------------");
+    console.log("---------------------------");
 
-    return nombre;
+    return nombre
 }
 
 // creamos una variable a nivel global para guardar el nombre del jugador que nos devuelve la función
-const nombreJugador = iniciarJuego();
+let nombreJugador = iniciarJuego();
+console.log(nombreJugador);
 
 /* -------------------------------------------------------------------------- */
 /*                          CONSIGNA MESA DE TRABAJO                          */
