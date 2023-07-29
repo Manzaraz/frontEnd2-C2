@@ -14,10 +14,28 @@
 
 /* ------------------------------ 👇Comenzamos ------------------------------ */
 // Primero debemos limpiar los scripts anteriores y dejar solo las funciones, quitamos las variables y las empezamos a declarar solo en este script
+let puntajes = {
+    usuario: 0,
+    computadora: 0
+}
 
-
+const nombreDelJugador = iniciarJuego()
 
 // 👇 mientras ninguno haya llegado a 2 puntos seguimos jugando
+
+while (puntajes.usuario < 2 && puntajes.computadora < 2) {
+    const resultadoDePartida = compararJugadas()
+    alert(resultadoDePartida)
+
+    console.log(resultadoDePartida);
+    if (resultadoDePartida.includes("ganaste")) {
+        puntajes.usuario++
+    } else if (resultadoDePartida.includes("perdiste")) {
+        puntajes.computadora++
+    }
+
+    console.table(puntajes);
+}
 
 
 /* -------------------------------------------------------------------------- */
