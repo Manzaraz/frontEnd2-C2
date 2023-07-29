@@ -81,7 +81,7 @@ function compararJugadas() {
 
 }
 
-const resultadoDePartida = compararJugadas()
+// const resultadoDePartida = compararJugadas()
 // console.log(resultadoDePartida);
 /* -------------------------------------------------------------------------- */
 /*                          CONSIGNA MESA DE TRABAJO                          */

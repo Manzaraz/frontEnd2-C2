@@ -29,9 +29,9 @@ function iniciarJuego() {
     // suludamos al usuario
     alert("Bienvenido al piedra papel o tijera de Frontend II.");
 
+    let nombre = prompt("Ingese su nombre por favor:").toUpperCase()
     do {
         // guardamos en una variable en nombre ingresado
-        const nombre = prompt("Ingese su nombre por favor:").toUpperCase()
         if (!isNaN(nombre) || nombre.length <= 3) {
             alert("Tu nombre debe tener mas de 3 caracteres y no se permiten numeros");
             ok = true;
@@ -50,8 +50,8 @@ function iniciarJuego() {
 
 
 // creamos una variable a nivel global para guardar el nombre del jugador que nos devuelve la función
-let nombreJugador = iniciarJuego();
-console.log(nombreJugador);
+// let nombreJugador = iniciarJuego();
+// console.log(nombreJugador);
 
 /* -------------------------------------------------------------------------- */
 /*                          CONSIGNA MESA DE TRABAJO                          */
