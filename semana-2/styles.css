@@ -1,0 +1,128 @@
+:root {
+    --celeste: rgb(40, 174, 192);
+    --celeste-oscuro: rgb(40, 108, 117);
+    --oscuro: rgb(32, 32, 32);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+header {
+    padding: 1rem 2rem;
+    background-color: var(--celeste);
+    color: white;
+}
+
+header h1 {
+    text-align: center;
+}
+
+.tema {
+    display: flex;
+    justify-content: end;
+}
+
+.tema button {
+    padding: .4rem .8rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--oscuro);
+    color: white;
+}
+
+.info {
+    display: flex;
+    gap: 2rem;
+    color: var(--oscuro)
+}
+
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+nav ul li {
+    cursor: pointer;
+    border-bottom: 4px solid white;
+    font-weight: bold;
+    padding: .3rem .7rem;
+}
+
+main {
+    padding: 1rem 2rem;
+
+}
+
+h2,
+h3 {
+    margin: 1rem 0 .5rem 0;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+.noticias {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background-color: rgb(238, 238, 238);
+}
+
+article {
+    min-width: 30%;
+    background-color: white;
+    max-width: 24rem;
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+}
+
+article img {
+    width: 100%;
+}
+
+footer {
+    padding: 1rem;
+    background-color: var(--celeste-oscuro);
+    color: white;
+    text-align: center;
+}
+
+/* ------------------------------- tema oscuro ------------------------------ */
+.dark {
+    background-color: var(--oscuro);
+}
+
+.dark header {
+    background-color: black;
+}
+
+.dark .info {
+    color: white;
+}
+
+.dark .noticias {
+    background-color: var(--oscuro);
+}
+
+.dark footer {
+    background-color: black;
+}
+.dark .noticias article {
+    background-color: black;
+    color: white;
+}
