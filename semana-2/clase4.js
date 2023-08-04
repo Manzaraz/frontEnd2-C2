@@ -1,67 +1,31 @@
-// 👇Acá vemos que el document nos dá acceso a todo el DOM, ese arbol que contiene todos los nodos de nuestro sitio
-console.log(document);
+// 🚩 Antes de empezar, vinculemos el HTML solo con el script de clase 4.
 
-// Ahora vamos a utilizar 2 métodos propios de document que nos facilitan "pescar" elementos en el sitio:
-// - querySelector()
-// - querySelectorAll()
-
-// Obtenemos el titulo principal
-const titulo = document.querySelector("h1")
-
-// Ahora vayamos a la consola y despleguemos la flecha que nos muestra todas las propiedades del nodo
-console.log(titulo);
-
-// nos traemos ahora un listado de nodos 👇
-console.log(titulo.textContent);
+// Vamos a interactuar con el DOM para agregarle mas estilos a nuestro sitio.
+// 👇 Primero capturemos todos los elementos que vamos a modificar.
 
 
-// hacemos un selector más específico👇
-const itemsMenu = document.querySelectorAll("ul li")
-console.log(itemsMenu);
 
-const infoExtra = document.querySelector(".info .clima")
-console.log(infoExtra);
+/* ---------------------------- Editado los ITEMS --------------------------- */
+// 👇acá podemos ver todas las propiedades CSS que podemos modificar con JS
 
-const datoExtra = document.querySelector("[src = './img/futbol.webp']")
-console.log(datoExtra.children);
 
-/* ------------------------------ Practicando ------------------------------ */
-// Seleccionamos la lista de noticias y revisamos su informacion interna.
-// Aprovechamos que la NodeList es un ITERABLE, entonces podemos recorrerla.
-// 🚩 No es un Array.
-const articulos = document.querySelectorAll("article ")
-// const articulos = document.querySelectorAll("article h2")
-console.log(articulos);
+// agregamos manualmente nuevos estilos en el menú
 
-for (let i = 0; i < articulos.length; i++) {
-    console.log(articulos[i]);
-}
+/* ----------------------------- Editando clases ---------------------------- */
 
-// Ahora hacemos la misma practica pero con ForEach, y accedemos a propiedades de los nodos.
-// articulos.forEach(
-//     function (articulo) {
-//         // const titulo = articulo.querySelector('h2').innerText
-//         const titulo = articulo.querySelector(`h2`).innerText
-//         console.log(titulo);
-//     }
-// )
-
-for (noticia of articulos) {
-    const titulo = noticia.querySelector("h2").textContent
-    console.log(titulo)
-}
-console.log(articulos);
-
-console.log(typeof (articulos))
-console.log(typeof (123))
-console.log(typeof ("mundo"))
+// vamos probando uno a uno los métodos
 
 
 
 /* -------------------------------------------------------------------------- */
 /*                          CONSIGNA MESA DE TRABAJO                          */
 /* -------------------------------------------------------------------------- */
-// 1 - Escribir un selector para cada elemento del sitio.
-// 2 - Plasmarlo en un diagrama de árbol como la consigna: https://docs.google.com/document/d/15nGvKkEcbrRgwqV50ISh0QYZ_TO67vmWQaLfNpUxqjs/preview
+// Primero debemos comentar o eliminar las líneas que modifican las clases de "sitio"
+// 1- Desarrollar la función a continuacion para que el usuario elija el tema del sitio.
+// 2- Debemos preguntarle al usuario mediante un confirm si desea usar el modo oscuro.
+// 3- Si el usuario confirma debemos aplicar la clase "dark" al "sitio", si cancela debe quedar en modo claro.
+// 4- A su vez, si está en modo onsecuritypolicyviolation, el texto del boton debe decir "Cambiar a modo claro 🌞". De lo contrario, si está en modo claro debeb decir "Cambiar a modo oscuro 🌛"
+function elegirTema() {
 
-
+}
+elegirTema();
