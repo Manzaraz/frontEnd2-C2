@@ -50,7 +50,8 @@ menuItems.forEach(item => {
 // console.log(sitio.classList.toggle("dark"));
 // console.log(sitio.classList.toggle("dark"));
 // console.log(sitio.classList.toggle("dark"));
-
+// btnTema.textContent = "Cambiar a modo claro 🌞"
+// btnTema.innerText = "Cambiar a modo oscuro 🌜"
 
 /* -------------------------------------------------------------------------- */
 /*                          CONSIGNA MESA DE TRABAJO                          */
