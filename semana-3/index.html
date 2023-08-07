@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="./css/styles.css" rel="stylesheet">
+  <title>Spotyfront</title>
+</head>
+
+<body>
+
+  <header>
+    <img id="logo" src="./img/logo-blanco.png" alt="logo spotifront">
+    <div class="perfil">
+      <h5>PERFIL</h5>
+      <h2>Bienvenido <span id="nombreUsuario"></span></h2>
+      <p>
+        <span id="cant-albums">0 álbumes</span> en tu listado - En total <span id="cant-favoritos">0 favoritos</span>
+      </p>
+    </div>
+  </header>
+
+  <div class="listado">
+    <h3>Tus selecciones:</h3>
+    <ul class="covers">
+      <!-- lista de los covers -->
+      <li data-id="x123">
+        <img src="https://m.media-amazon.com/images/I/71DQrKpImPL._SL1400_.jpg" alt="Nevermind">
+        <p>Nevermind</p>
+        <i id="x123" class="fa fa-heart favorito"></i>
+      </li>
+      <li data-id="y456">
+        <img
+          src="https://img.discogs.com/LfnH5tbhcZ4xRMNLAodIyvea9xA=/fit-in/600x600/filters:strip_icc():format(webp):mode_rgb():quality(90)/discogs-images/R-294033-1151290881.jpeg.jpg"
+          alt="Thriller">
+        <p>Thriller</p>
+        <i id="y456" class="fa fa-heart "></i>
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    <!-- banner -->
+  </footer>
+</body>
+<script src="./clase-5.js"></script>
+<!-- <script src="./clase-6.js"></script> -->
+
+</html>
