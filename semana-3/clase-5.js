@@ -44,27 +44,88 @@ const albumesFamosos = [{
 /* -------------------------------------------------------------------------- */
 //do while, prompt, innerText
 function obtenerUsuario() {
+    const nombreUsuario = document.querySelector("#nombreUsuario")
+    // console.log(nombreUsuario);
+    let usuario = ""
 
     // Pedimos el nombre de usuario hasta que sea válido:
+    do {
+        usuario = prompt("Ingrese su nombre de Usuario: ").toLowerCase()
+    } while (usuario === null || usuario === "" || usuario.length < 3);
 
     // Insertamos el nombre en el HTML
+    let nombres = usuario.split(" ")
+    // console.log(nombres);
+    // console.log(nombres.map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1)));
+
+    usuario = nombres.map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1))
+    nombreUsuario.innerHTML = usuario.join(" ")
 
 
 }
-obtenerUsuario();
+// obtenerUsuario();
 
 /* -------------------------------------------------------------------------- */
 /*                [2] FUNCION: renderizar tarjetas del almbumes               */
 /* -------------------------------------------------------------------------- */
 //forEach, template strings, innerHTML
 function renderizarAlbumes(listado) {
-
+    // Capturamos el selector del ul con la clase covers
     // primero capturamos el nodo que se convertirá en nuestro contenedor de albumes
-
+    const covers = document.querySelector(".covers")
     // nos aseguramos de vaciar el contenedor antes de insertar nuevos elementos
-
+    console.log(covers);
+    covers.innerHTML = ""
+    console.log(covers.children);
 
     /* Método de insersión de Nodos */
+    // albumesFamosos.forEach( album => {
+    // albumesFamosos.forEach(function (album) {
+    //     // Primero creamos estos elementos 
+    //     const li = document.createElement("li")
+    //     const img = document.createElement("img")
+    //     const p = document.createElement("p")
+    //     const i = document.createElement("i")
+
+    //     // Agregamos los atributos a cada nodo creado
+    //     li.setAttribute("data-id", album.id)
+    //     img.setAttribute("src", album.imagen)
+    //     p.textContent = album.nombre
+    //     // i.setAttribute("class", "fa fa-heart favorito")
+    //     // quiero agregar la clase favorito con un operador ternario
+    //     // notacion condición ? expr1 : expr2
+    //     i.setAttribute("id", album.id)
+    //     i.setAttribute("class", `fa fa-heart ${album.like ? "favorito" : ""}`)
+    //     // i.setAttribute("class", `fa fa-heart`)
+    //     // i.setAttribute("class", album.like ? "favorito" : "")
+    //     // i.classList.add(album.like ? "favorito" : "")
+
+    //     // Cargamos los nuevos nodos al selector covers
+    //     li.appendChild(img)
+    //     li.appendChild(p)
+    //     li.appendChild(i)
+
+    //     // Ahora nos quedad agregar este contenedor (li) a nuestro DOM en el selector covers
+    //     covers.appendChild(li)
+
+    // })
+
+
+    const CERATI = {
+        id: "ar77",
+        nombre: "Fuerza Natural",
+        imagen: "http://cerati.com/fuerza_natural/tapa.jpg",
+        like: true
+    }
+
+    // metodo de template Literals 
+    covers.innerHTML += `
+        <li data-id="${CERATI.id}">
+            <img src="${CERATI.imagen}" alt="${CERATI.nombre}">
+            <p>${CERATI.nombre}</p>
+            <i id="y456" class="fa fa-heart ${CERATI.like ? "favorito" : ""}  "></i>
+        </li>
+    `
 
 
     // ☝ importante repasar el operador ternario, en este caso si el album tiene su
