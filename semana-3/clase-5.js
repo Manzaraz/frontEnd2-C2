@@ -58,8 +58,10 @@ function obtenerUsuario() {
     // console.log(nombres);
     // console.log(nombres.map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1)));
 
-    usuario = nombres.map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1))
-    nombreUsuario.innerHTML = usuario.join(" ")
+    usuario = nombres.map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1)).join(" ")
+
+
+    return usuario
 
 
 }
@@ -74,41 +76,41 @@ function renderizarAlbumes(listado) {
     // primero capturamos el nodo que se convertirá en nuestro contenedor de albumes
     const covers = document.querySelector(".covers")
     // nos aseguramos de vaciar el contenedor antes de insertar nuevos elementos
-    console.log(covers);
+    // console.log(covers);
     covers.innerHTML = ""
-    console.log(covers.children);
+    // console.log(covers.children);
 
     /* Método de insersión de Nodos */
     // albumesFamosos.forEach( album => {
-    // albumesFamosos.forEach(function (album) {
-    //     // Primero creamos estos elementos 
-    //     const li = document.createElement("li")
-    //     const img = document.createElement("img")
-    //     const p = document.createElement("p")
-    //     const i = document.createElement("i")
+    albumesFamosos.forEach(function (album) {
+        // Primero creamos estos elementos 
+        const li = document.createElement("li")
+        const img = document.createElement("img")
+        const p = document.createElement("p")
+        const i = document.createElement("i")
 
-    //     // Agregamos los atributos a cada nodo creado
-    //     li.setAttribute("data-id", album.id)
-    //     img.setAttribute("src", album.imagen)
-    //     p.textContent = album.nombre
-    //     // i.setAttribute("class", "fa fa-heart favorito")
-    //     // quiero agregar la clase favorito con un operador ternario
-    //     // notacion condición ? expr1 : expr2
-    //     i.setAttribute("id", album.id)
-    //     i.setAttribute("class", `fa fa-heart ${album.like ? "favorito" : ""}`)
-    //     // i.setAttribute("class", `fa fa-heart`)
-    //     // i.setAttribute("class", album.like ? "favorito" : "")
-    //     // i.classList.add(album.like ? "favorito" : "")
+        // Agregamos los atributos a cada nodo creado
+        li.setAttribute("data-id", album.id)
+        img.setAttribute("src", album.imagen)
+        p.textContent = album.nombre
+        // i.setAttribute("class", "fa fa-heart favorito")
+        // quiero agregar la clase favorito con un operador ternario
+        // notacion condición ? expr1 : expr2
+        i.setAttribute("id", album.id)
+        i.setAttribute("class", `fa fa-heart ${album.like ? "favorito" : ""}`)
+        // i.setAttribute("class", `fa fa-heart`)
+        // i.setAttribute("class", album.like ? "favorito" : "")
+        // i.classList.add(album.like ? "favorito" : "")
 
-    //     // Cargamos los nuevos nodos al selector covers
-    //     li.appendChild(img)
-    //     li.appendChild(p)
-    //     li.appendChild(i)
+        // Cargamos los nuevos nodos al selector covers
+        li.appendChild(img)
+        li.appendChild(p)
+        li.appendChild(i)
 
-    //     // Ahora nos quedad agregar este contenedor (li) a nuestro DOM en el selector covers
-    //     covers.appendChild(li)
+        // Ahora nos quedad agregar este contenedor (li) a nuestro DOM en el selector covers
+        covers.appendChild(li)
 
-    // })
+    })
 
 
     const CERATI = {
@@ -150,8 +152,76 @@ renderizarAlbumes(albumesFamosos);
 // 2- contar la cantidad de favoritos y pintarlo en el span correspondiente
 // 3- tener en cuenta: usar las palabra en plural o en singular, según cuando
 // sea necesario ( es decir: 1 album, 1 favorito / 2 albumes, 3 favoritos )
-function mostrarDatosEnPerfil() {
-    // desarrollar la función 👇
+/* ----------------------------- MESA DE TRABAJO ---------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                   [3] FUNCION: mostrar datos del usuario                   */
+/* -------------------------------------------------------------------------- */
+// Paso 1) comentar las líneas del forEach(), y trata de renderizar los álbumes, pero esta ves usando la insersión template literals
+// Paso 2) Dentro del div '.perfil' tenemos un parrafo con 2 span en los que debemos colocar
+// correctamente su contenido.
+// Para eso debemos hacer ciertos calculos y colocar esa info en el HTML. Debemos:
+// 1- contar la cantidad de albumes del array y pintarlo en el span correspondiente
+// 2- contar la cantidad de favoritos y pintarlo en el span correspondiente
+// 3- tener en cuenta: usar las palabra en plural o en singular, según cuando
+// sea necesario ( es decir: 1 album, 1 favorito / 2 albumes, 3 favoritos )
+
+function mostrarDatosEnPerfil(albumesFamosos) {
+    const covers = document.querySelector(".covers")
+    covers.innerHTML = ""
+
+    let contadorAlbumes = 0;
+    let contadorFavoritos = 0;
+
+    for (const album of albumesFamosos) {
+        covers.innerHTML += `
+        <li data-id="${album.id}">
+            <img src="${album.imagen}" alt="${album.nombre}">
+            <p>${album.nombre}</p>
+            <i id="y456" class="fa fa-heart ${album.like ? "favorito" : ""}  "></i>
+        </li> `
+
+        contadorAlbumes = contadorAlbumes + 1;
+        if (album.like === true) {
+            contadorFavoritos = contadorFavoritos + 1
+        }
+    }
+
+    const pluralAlbumes = contadorAlbumes === 1 ? "álbum" : "álbumes";
+    const pluralFavoritos = contadorFavoritos === 1 ? "favorito" : "favoritos";
+
+    const perfil = document.querySelector(".perfil")
+    perfil.innerHTML = ""
+
+    // console.log(perfil.children);
+    let usuario = obtenerUsuario();
+    console.log(usuario);
+    // let usuario= "";
+
+    /*
+    do {
+        usuario = prompt("Ingrese su nombre de Usuario: ").toLowerCase()
+    } while (usuario === null || usuario === "" || usuario.length < 3);
+
+     let nombres = usuario.split(" ") 
+     usuario = nombres.map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1)).join(" ")*/
+
+    perfil.innerHTML = `
+    <h5>PERFIL</h5>
+    <h2>Bienvenido <span id="id="nombreUsuario">${usuario}</span></h2>
+    <p>
+      <span id="cant-albums">${contadorAlbumes} ${pluralAlbumes}</span> en tu listado - En total 
+      <span id="cant-favoritos">${contadorFavoritos} ${pluralFavoritos}</span>
+    </p>`
+
+
+    /* albumesFamosos.map( album => {
+         covers.innerHTML += `
+         <li data-id="${album.id}">
+             <img src="${album.imagen}" alt="${album.nombre}">
+             <p>${album.nombre}</p>
+             <i id="y456" class="fa fa-heart ${album.like ? "favorito" : ""}  "></i>
+         </li> `
+      })*/
 
 }
-mostrarDatosEnPerfil();
+mostrarDatosEnPerfil(albumesFamosos);
