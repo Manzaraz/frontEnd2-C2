@@ -6,6 +6,33 @@
 // - volver a renderizar
 function marcarFavorito() {
     // selecciona todos los botones del like
+    const botonesLike = document.querySelectorAll(".fa-heart")
+    console.log(botonesLike);
+
+    botonesLike.forEach(function (boton) {
+        boton.addEventListener("click", function (evento) {
+            console.log(evento)
+            console.log(evento.target)
+            console.log(evento.target.id)
+            let albumId = evento.target.id
+
+            albumesFamosos.forEach(album => {
+                if (albumId == album.id) {
+                    // console.log("coincide" + album.id);
+                    console.log(album.like);
+                    album.like = !album.like
+                    console.log(album.like);
+                }
+            })
+
+            // Para renderizar nuevamente las tarjetas para que se pinte de nuevo el album famos
+            renderizarAlbumes()
+            mostrarDatosEnPerfil(albumesFamosos)
+
+            // agregar un listener para seguir escuchando si aprieta otro boton
+            marcarFavorito()
+        })
+    })
 
 }
 marcarFavorito()
@@ -29,7 +56,9 @@ marcarFavorito()
 
 function eliminarAlbum() {
     // desarrollar la función 👇
-
+    document.addEventListener("keydown", function (evento) {
+        console.log(evento.code)
+    })
 
 
 
