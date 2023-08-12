@@ -59,13 +59,12 @@ function obtenerUsuario() {
     // console.log(nombres.map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1)));
 
     usuario = nombres.map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1)).join(" ")
+    nombreUsuario.textContent = usuario
 
-
-    return usuario
 
 
 }
-// obtenerUsuario();
+obtenerUsuario();
 
 /* -------------------------------------------------------------------------- */
 /*                [2] FUNCION: renderizar tarjetas del almbumes               */
@@ -166,62 +165,32 @@ renderizarAlbumes(albumesFamosos);
 // sea necesario ( es decir: 1 album, 1 favorito / 2 albumes, 3 favoritos )
 
 function mostrarDatosEnPerfil(albumesFamosos) {
-    const covers = document.querySelector(".covers")
-    covers.innerHTML = ""
+    // Obtener elementos necesarios para el perfil
 
-    let contadorAlbumes = 0;
-    let contadorFavoritos = 0;
 
-    for (const album of albumesFamosos) {
-        covers.innerHTML += `
-        <li data-id="${album.id}">
-            <img src="${album.imagen}" alt="${album.nombre}">
-            <p>${album.nombre}</p>
-            <i id="y456" class="fa fa-heart ${album.like ? "favorito" : ""}  "></i>
-        </li> `
+    const cantAlbums = document.getElementById('cant-albums'),
+        cantFavoritos = document.getElementById("cant-favoritos")
+    let contadorAlbum = 0
+    let contadorFavoritos = 0
 
-        contadorAlbumes = contadorAlbumes + 1;
-        if (album.like === true) {
-            contadorFavoritos = contadorFavoritos + 1
+    albumesFamosos.forEach(album => {
+        contadorAlbum++
+        if (album.like) {
+            contadorFavoritos++
         }
+    })
+    console.log(contadorAlbum)
+    console.log(contadorFavoritos)
+
+    if (contadorAlbum == 1) {
+        cantAlbums.innerText = contadorAlbum + " album"
+    } else {
+        cantAlbums.innerText = contadorAlbum + " albumes"
     }
-
-    const pluralAlbumes = contadorAlbumes === 1 ? "álbum" : "álbumes";
-    const pluralFavoritos = contadorFavoritos === 1 ? "favorito" : "favoritos";
-
-    const perfil = document.querySelector(".perfil")
-    perfil.innerHTML = ""
-
-    // console.log(perfil.children);
-    let usuario = obtenerUsuario();
-    console.log(usuario);
-    // let usuario= "";
-
-    /*
-    do {
-        usuario = prompt("Ingrese su nombre de Usuario: ").toLowerCase()
-    } while (usuario === null || usuario === "" || usuario.length < 3);
-
-     let nombres = usuario.split(" ") 
-     usuario = nombres.map((nombre) => nombre.charAt(0).toUpperCase() + nombre.slice(1)).join(" ")*/
-
-    perfil.innerHTML = `
-    <h5>PERFIL</h5>
-    <h2>Bienvenido <span id="id="nombreUsuario">${usuario}</span></h2>
-    <p>
-      <span id="cant-albums">${contadorAlbumes} ${pluralAlbumes}</span> en tu listado - En total 
-      <span id="cant-favoritos">${contadorFavoritos} ${pluralFavoritos}</span>
-    </p>`
-
-
-    /* albumesFamosos.map( album => {
-         covers.innerHTML += `
-         <li data-id="${album.id}">
-             <img src="${album.imagen}" alt="${album.nombre}">
-             <p>${album.nombre}</p>
-             <i id="y456" class="fa fa-heart ${album.like ? "favorito" : ""}  "></i>
-         </li> `
-      })*/
-
+    if (contadorFavoritos == 1) {
+        cantFavoritos.innerText = contadorFavoritos + " favorito"
+    } else {
+        cantFavoritos.innerText = contadorFavoritos + " favoritos"
+    }
 }
-mostrarDatosEnPerfil(albumesFamosos);
+mostrarDatosEnPerfil(albumesFamosos)
