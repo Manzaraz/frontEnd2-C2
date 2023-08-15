@@ -56,12 +56,25 @@ marcarFavorito()
 
 function eliminarAlbum() {
     // desarrollar la función 👇
-    document.addEventListener("keydown", function (evento) {
-        console.log(evento.code)
+    window.addEventListener("keydown", function (ev) {
+        console.log(ev);
+        console.log(ev.key);
+        if (ev.key == "f") {
+            const albumAEliminar = prompt("¿Qué album desea eliminar?").toLowerCase()
+
+            const posicionBuscada = albumesFamosos.findIndex(el => el.nombre.toLowerCase() === albumAEliminar)
+            console.log(posicionBuscada);
+            if (posicionBuscada == -1) {
+                alert("El album no está en la lista de reproduccion")
+            } else {
+                albumesFamosos.splice(posicionBuscada, 1)
+            }
+
+
+        }
+        renderizarAlbumes()
+        marcarFavorito()
+        mostrarDatosEnPerfil(albumesFamosos)
     })
-
-
-
-
 }
 eliminarAlbum();
