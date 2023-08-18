@@ -167,7 +167,6 @@ renderizarAlbumes(albumesFamosos);
 function mostrarDatosEnPerfil(albumesFamosos) {
     // Obtener elementos necesarios para el perfil
 
-
     const cantAlbums = document.getElementById('cant-albums'),
         cantFavoritos = document.getElementById("cant-favoritos")
     let contadorAlbum = 0

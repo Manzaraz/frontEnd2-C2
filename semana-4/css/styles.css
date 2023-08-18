@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+  background-color: blueviolet;
+}
+
+form {
+  background-color: white;
+  width: 300px;
+  padding: 2em;
+  margin: 2em auto;
+  border-radius: .2em;
+}
+
+h1 {
+  margin-bottom: .5em;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  width: 100%;
+  border: none;
+  border: 1px solid rgba(137, 43, 226, 0.205);
+  margin-top: 1em;
+  box-sizing: border-box;
+  padding: 1em;
+}
+
+fieldset legend {
+  padding: 0 1em;
+}
+
+.datos input {
+  width: 100%;
+  margin-bottom: .5em;
+  border-radius: .2em;
+}
+
+.formGroup {
+  width: 100%;
+  display: flex;
+  gap: 1em;
+}
+
+button {
+  background-color: blueviolet;
+  color: white;
+  font-size: 1.1em;
+  padding: .5em 1em;
+  border: none;
+  margin-top: 1em;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
