@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clase 12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+
+    <form>
+        <div class="fila">
+            <h2>Registro</h2>
+        </div>
+        <div class="fila">
+            <label for="email">Email</label>
+            <input type="email" id="email" autofocus>
+            <p><small class="error" id="emailError">Debe ser un email válido.</small></p>
+        </div>
+        <div class="fila">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password">
+            <p><small class="error" id="passwordError">Deben ser al menos 6 caracteres sin espacios e incluir un número.</small></p>
+        </div>
+        <div class="fila">
+            <label for="rol">Rol</label>
+            <select id="rol">
+                <option hidden disabled selected value>-- seleccionar --</option>
+                <option value="frontend">frontend</option>
+                <option value="backend">backend</option>
+            </select>
+            <p><small class="error" id="rolError">Selecciona un rol.</small></p>
+        </div>
+        <div class="fila">
+            <div class="condiciones">
+                <input type="checkbox" id="terminos">
+                <label for="terminos">Aceptar términos y condiciones.</label>
+            </div>
+            <p><small class="error" id="terminosError">Debes aceptar los términos.</small></p>
+        </div>
+        <button type="submit">Registrarse 👍</button>
+    </form>
+
+
+    <script src="./Clase-13.js"></script>
+</body>
+
+</html>
