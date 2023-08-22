@@ -35,13 +35,11 @@ const terminosError = document.querySelector('#terminosError');
 /* -------------------------------------------------------------------------- */
 function mostrarErrores() {
     // por cada small mostramos u ocultamos el error
-    estadoErroresOK.email ? emailError.classList.remove('visible') : emailError.classList.add('visible');
+    estadoErroresOK.email ? emailError.classList.remove("visible") : emailError.classList.add("visible")
+    estadoErroresOK.password ? passwordError.classList.remove("visible") : passwordError.classList.add("visible")
+    estadoErroresOK.rol ? rolError.classList.remove("visible") : rolError.classList.add("visible")
+    estadoErroresOK.terminos ? terminosError.classList.remove("visible") : terminosError.classList.add("visible")
 
-    estadoErroresOK.password ? passwordError.classList.remove('visible') : passwordError.classList.add('visible');
-
-    estadoErroresOK.rol ? rolError.classList.remove('visible') : rolError.classList.add('visible');
-
-    estadoErroresOK.terminos ? terminosError.classList.remove('visible') : terminosError.classList.add('visible');
 }
 
 /* -------------------------------------------------------------------------- */
@@ -52,19 +50,21 @@ function mostrarErrores() {
 formulario.addEventListener('change', function () {
 
     // 👇 actualizo el estado de la pantalla con los datos
-    estadoUsuario.email = inputEmail.value;
-    estadoUsuario.password = inputPassword.value;
-    estadoUsuario.rol = inputRol.value;
-    estadoUsuario.terminos = inputTerminos.checked;
+    estadoUsuario.email = inputEmail.value
+    estadoUsuario.password = inputPassword.value
+    estadoUsuario.rol = inputRol.value
+    estadoUsuario.terminos = inputTerminos.value
+    // console.log("hola");
 
     // 👇 actualizo el estado del error segun el estado del usuario
-    estadoErroresOK.email = validarEmail(estadoUsuario.email);
+    estadoErroresOK.email = validarEmail(estadoUsuario.email)
     estadoErroresOK.password = validarPassword(estadoUsuario.password);
     estadoErroresOK.rol = validarRol(estadoUsuario.rol);
     estadoErroresOK.terminos = validarTerminos(estadoUsuario.terminos);
 
+
     // finalmente muestro los errores presentes
-    mostrarErrores();
+    mostrarErrores()
 });
 
 
@@ -74,51 +74,56 @@ formulario.addEventListener('change', function () {
 function validarEmail(email) {
     let resultado = false;
 
-    // // EJEMPLO VALIDACIÓN A MANO 👇
-    // if (email.includes('@') && email.includes('.') && !email.includes(' ') && email.length > 5) {
-    //     resultado = true;
-    // } 
+    // Validacion de email a la vieja escuela JS
+    // if (
+    //     email.includes("@") &&
+    //     email.includes(".") &&
+    //     !email.includes(" ") &&
+    //     email.length > 5
+    // ) {
+    //     resultado = true
+    // }
 
+    // mail@algo.com
     // EJEMPLO CON EXPRESION REGULAR 👇
-    let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
-
-    if (regex.test(email)) {
-        resultado = true;
+    let regExp = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$")
+    if (regExp.test(email)) {
+        resultado = true
+        console.log("cumple");
     }
 
-    return resultado;
+
+    return resultado
 }
 
 function validarPassword(password) {
     let resultado = false;
 
     // si pasa las pruebas lo damos por válido 👇
-    if (password.length > 5 && !password.includes(' ')) {
+    if (password.length > 5 && !password.includes(" ")) {
         resultado = true;
     }
-
     return resultado;
 }
 
 function validarRol(rol) {
     let resultado = false;
 
-    // si pasa las pruebas lo damos por válido 👇
-    if (rol === "frontend" || rol === "backend") {
+    // si pasa las pruebas los damos por válido
+    if (rol == "frontend" || rol == "backend") {
         resultado = true;
     }
-
     return resultado;
+
 }
 
 function validarTerminos(verificacion) {
     let resultado = false;
 
-    // si pasa las pruebas lo damos por válido 👇
+    // si pasa las pruebas los damos por válido
     if (verificacion) {
         resultado = true;
     }
-
     return resultado;
 }
 
@@ -130,16 +135,17 @@ function validarTerminos(verificacion) {
 // en el evento submit nos remitimos a chequear nuestro estado de errores
 formulario.addEventListener('submit', function (evento) {
     // prevenimos el default para manejar nososotro el comportamiento
-    evento.preventDefault();
+    evento.preventDefault()
 
-    console.log(estadoUsuario);
-    console.log(estadoErroresOK);
-
-    if (estadoErroresOK.email && estadoErroresOK.password && estadoErroresOK.rol && estadoErroresOK.terminos) {
-        alert("Pasó todas las validaciones!");
-        // ☝ luego reemplazar esto por la funcion de éxito
+    if (
+        estadoErroresOK.email &&
+        estadoErroresOK.password &&
+        estadoErroresOK.rol &&
+        estadoErroresOK.terminos
+    ) {
+        alert("Pasó todas las pruebas")
+        navegarPaginaExito()
     }
-
 });
 
 
@@ -152,9 +158,11 @@ formulario.addEventListener('submit', function (evento) {
 // Esta funcion se va a encargar de realizar la redirección cuando el formulario se complete correctamente.
 // Para eso debera cumplir con los siguientes requerimientos.
 // 1 - Deshabilitar el boton del formulario.
-// 2 - Esperar 3 segundos para redireccionar a la página de 
+// 2 - Esperar 3 segundos para redireccionar a la página de usuario.html
 // 3 - Durante ese tiempo el boton deshabilitado debe mostrar el texto: "Cargando..."
 // 4 - Cuando vaya a la página de 'usuario.html' NO se debe permitir que mediante el botón de "Atrás"(la flechita del navegador) el usuario vuelva a index.
+// evento location.
+// location.replace()
 
 function navegarPaginaExito() {
     //   desarrollar la funcion aqui
