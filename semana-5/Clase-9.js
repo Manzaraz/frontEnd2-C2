@@ -53,7 +53,7 @@ formulario.addEventListener('change', function () {
     estadoUsuario.email = inputEmail.value
     estadoUsuario.password = inputPassword.value
     estadoUsuario.rol = inputRol.value
-    estadoUsuario.terminos = inputTerminos.value
+    estadoUsuario.terminos = inputTerminos.checked // cambio el value por checked
     // console.log("hola");
 
     // 👇 actualizo el estado del error segun el estado del usuario
@@ -86,7 +86,7 @@ function validarEmail(email) {
 
     // mail@algo.com
     // EJEMPLO CON EXPRESION REGULAR 👇
-    let regExp = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$")
+    let regExp = new RegExp("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}") // Modifiqué la expresión regular
     if (regExp.test(email)) {
         resultado = true
         console.log("cumple");
@@ -143,8 +143,8 @@ formulario.addEventListener('submit', function (evento) {
         estadoErroresOK.rol &&
         estadoErroresOK.terminos
     ) {
-        alert("Pasó todas las pruebas")
-        navegarPaginaExito()
+        // alert("Pasó todas las pruebas")
+        navegarPaginaExito() // Instancio la función que me lleva a mi perfíl de usuario
     }
 });
 
@@ -165,6 +165,15 @@ formulario.addEventListener('submit', function (evento) {
 // location.replace()
 
 function navegarPaginaExito() {
-    //   desarrollar la funcion aqui
+    // desarrollar la funcion aqui 
+    const btn = document.querySelector('button');
+    btn.setAttribute('disabled', true);
+    btn.innerText = "Cargando..."
 
+    localStorage.setItem('user', JSON.stringify(estadoUsuario));
+
+
+    setTimeout(() => {
+        location.replace('./usuario.html')
+    }, 3000);
 }

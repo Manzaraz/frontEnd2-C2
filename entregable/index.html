@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div id="sitio">
+
+    <h1>Perfil del Developer</h1>
+    <img src="https://cdn1.vectorstock.com/i/thumb-large/22/50/developer-line-icon-outline-vector-30762250.jpg" alt="developer" id="developer" />
+    <button id="completar-perfil">Completar Datos</button>
+    <button id="obtener-materias">Obtener Materias</button>
+    <button id="cambiar-tema">Cambiar Tema</button>
+
+    <!-- ------------------------------- parte 1 ------------------------------- -->
+    <div class="card-header">
+      <h3>Nombre: <span id="nombre"></span></h3>
+      <h3>Edad: <span id="edad"></span></h3>
+      <h3>Ciudad: <span id="ciudad"></span></h3>
+      <h3>Interes en Javascript: <span id="javascript"></span></h3>
+    </div>
+    <hr>
+    <!-- ------------------------------- parte 2 ------------------------------- -->
+
+    <section>
+      <h2>Materias de Frontend</h2>
+
+      <div id="fila"></div>
+    </section>
+
+    <hr />
+
+    <!-- ------------------------------- parte 3 ------------------------------- -->
+
+    <section>
+      <h2>Sobre mi</h2>
+      <div id="card">
+        <p id="sobre-mi" class="oculto">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor tempore,
+          dolorem, nostrum magnam corporis sapiente aliquid quidem nihil quia,
+          tenetur officia sunt saepe eius labore porro odio assumenda quisquam.
+          Tempora?
+        </p>
+        <div>
+          <small>*Apretá la F y visualizá el texto.</small>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="code.js"></script>
+</body>
+
+</html>

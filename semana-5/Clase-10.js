@@ -1,19 +1,15 @@
 // Vamos a trabajar pasando información al Storage.
 // De esta manera vamos a poder consumir en un html algo que haya guardado otro.
-// 👉 Para eso debemos agregar al principio de la función [5] en script 'Clase-13' la siguiente línea:
+// 👉 Para eso debemos agregar al principio de la función [5] en script 'Clase-9' la siguiente línea:
 //     localStorage.setItem('user', JSON.stringify(estadoUsuario));
 
 /* -------------------------------------------------------------------------- */
 /*           [6] FUNCION: Escuchamos el evento de carga de la página          */
 /* -------------------------------------------------------------------------- */
-window.addEventListener('load', function () {
-    // 👇 Todo lo que desarrollamos dentro, se ejecuta una vez que se carga la página
+window.addEventListener('load', () => {
+    const user = recuperarDataStorage()
 
-    // nos traemos la info del storage
-
-
-    // utilizamos la funcion para el renderizado
-
+    renderizarElementos(user)
 
 })
 
@@ -21,21 +17,36 @@ window.addEventListener('load', function () {
 /*                 [7] FUNCION: Recuperar la info del storage                 */
 /* -------------------------------------------------------------------------- */
 function recuperarDataStorage() {
+    // Buscar cen LocalStorage el dato almacenado con la clave user
+    const datosEnJson = localStorage.getItem("user")
+    // console.log(datosEnJson);
 
+    // trasnformo el dato en json de datosEnJson a un objeto literal de JS
+    const datosParseados = JSON.parse(datosEnJson)
+    // console.log(datosParseados);
+
+    // retorno el dato parseado
+    return datosParseados
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*                [8] FUNCION: Renderizamos la info en pantalla               */
 /* -------------------------------------------------------------------------- */
-function renderizarElementos(objeto) {
-    // capturamos los nodos
+function renderizarElementos(objetoJs) {
+    console.log(objetoJs);
+    console.log(objetoJs.email);
+    console.log(objetoJs.rol);
 
-    // pintamos las propiedades del objeto en pantalla
+    // <h4 id="email"></h4>
+    // <p id="perfil"></p>
+    const email = document.querySelector("#email")
+    const perfil = document.querySelector("#perfil")
 
+    // Pintar las propiedades del objeto en pantalla 
+    email.textContent = objetoJs.email
+    perfil.innerText = objetoJs.rol
 
 }
-
 
 /* ----------------------------- MESA DE TRABAJO ---------------------------- */
 /* -------------------------------------------------------------------------- */
