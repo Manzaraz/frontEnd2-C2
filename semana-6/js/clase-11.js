@@ -81,7 +81,16 @@ boton.addEventListener('click', function () {
     console.log("Clink para ver comentarios...");
 
     //    Esta funcion retorna una promesa, por eso capturamos su resultado con el then()
-
+    consultaAsincrona("endpoint")
+        //consultaAsincrona("endpointestamal") // introduzco mal el endpoint para  manejar el rechazo
+        .then((respuesta) => {
+            console.log(respuesta);
+            renderizarElementos(respuesta)
+        })
+        .catch(error => {
+            console.log(error)
+            console.log(error.message);
+        })
 })
 
 /* -------------------------------------------------------------------------- */
@@ -92,6 +101,24 @@ boton.addEventListener('click', function () {
 
 function consultaAsincrona(texto) {
 
+    // retorna una promesa
+    return new Promise((resolve, reject) => {
+
+        // simular la espera de la información del server con el settTimeout
+        setTimeout(() => {
+            // Chequear que el text sea el correcto
+            // 
+            if (texto == "endpoint") {// en caso de que la respuesta sea success (estado 200)
+                // Si está ok devolvemos el listado para que lo renderice
+                resolve(listadoComentarios)
+            } else { // en caso de que la url o endpoint no sea válida (estado 400)
+                // otra posiblidad es que la promesa sea rechazada
+                reject({
+                    message: "Consulta rechazada."
+                })
+            }
+        }, 2500);
+    })
 
 }
 
@@ -111,4 +138,5 @@ function consultaAsincrona(texto) {
 
 function renderizarElementos(listado) {
     // desarrollar la funcion 👇
+    console.log(listado);
 }
