@@ -11,6 +11,18 @@
 
 function consultaApi(endpoint) {
 
+    fetch(endpoint)
+        .then((respuesta) => {  // este then lo necesito para parasear la información, ya que hasta este punto estoy recibiendo un JSON
+            // console.log(respuesta.json());
+            return respuesta.json()
+        })
+        .then(respuestaJS => { // este then lo necesito para poder utilizar  y renderizar los comentairos ya que es aquí un objeto literal de js
+            // console.log(respuestaJS);
+            renderizarElementos(respuestaJS)
+        })
+        .catch(err => {
+            console.error(err)
+        })// MANEJAR EN CASO DE ERROR
 
 
 }
@@ -24,7 +36,11 @@ const boton = document.querySelector('button');
 const endpoint = 'https://jsonplaceholder.typicode.com/comments';
 
 boton.addEventListener('click', function () {
+    console.log("Click para ver comentarios");
 
+    consultaApi(endpoint)
+
+    console.log("Fin de comentarios");
 })
 
 /* -------------------------------------------------------------------------- */
@@ -34,6 +50,32 @@ boton.addEventListener('click', function () {
 // el .map() y .join() para obtener el resultado esperado.
 
 function renderizarElementos(listado) {
+    console.log(listado);
+    const comentarios = document.querySelector(".comentarios")
+
+    /*
+    // Utilizando forEach para renderizar 
+    comentarios.innerHTML = ""
+    listado.forEach(comentario => {
+        comentarios.innerHTML += `
+        <div data-id="${comentario.postId}" class="comentario">
+             <h4>${comentario.email}</h4>
+             <p>${comentario.name}</p>
+         </div>`
+    });
+    */
+
+
+    // /*
+    // Utilizando map para renderizar 
+    comentarios.innerHTML = listado.map(comentario => {
+        return `
+         <div data-id="${comentario.id}" class="comentario">
+             <h4>${comentario.email}</h4>
+             <p>${comentario.body}</p>
+         </div>`
+    }).join("")
+    // */
 
 }
 
