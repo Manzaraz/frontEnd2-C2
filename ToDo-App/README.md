@@ -12,11 +12,11 @@ Este proyecto es la oportunidad de repasar todo lo aprendido y poner en práctic
 
 ## API Docs
 Link con la documentación de los endpoints de la API y su funcionamiento:
-👉 https://ctd-todo-api.herokuapp.com/
+👉 https://todo-api.ctd.academy/v1
     
 
 ## Requerimientos funcionales en pantalla de Login
-- [ ] FUNCIÓN 1: Escuchar el submit y preparar los datos para elenvío.
+- [] FUNCIÓN 1: Escuchar el submit y preparar los datos para elenvío.
 - [ ] FUNCIÓN 2: Realizar la petición a la API para ingresar si los datos del usuario son correctos.
 
 ## Requerimientos funcionales en pantalla de Signup
