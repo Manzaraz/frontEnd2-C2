@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
             password: password.value
         }
         // vemos el objeto que recibimos del formulario
-        // console.log(payload);
+        console.log(payload);
 
         //configuramos la request del Fetch
         const settings = {
@@ -51,10 +51,11 @@ window.addEventListener('load', function () {
                 console.log(response);
 
                 // manejar el error de la request.
-                if (response.ok) return response.json()
+                //  if (response.ok) 
+                return response.json()
 
                 // si llego acá es por que la request no es la correcta y fuerzo el rechazo de la promesa del fetch
-                return Promise.reject(response)
+                // return Promise.reject(response)
 
             })
             .then(data => {
