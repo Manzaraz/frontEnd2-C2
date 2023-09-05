@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDo App</title>
+  <link rel="icon" type="image/x-icon" href="./assets/DH_Logo_Black.png">
+  <meta name="description" content="Digital House CTD | Proyecto integrador | FRONTEND II" />
+
+  <!-- ----------------------------- estilos CSS ----------------------------- -->
+  <link rel="stylesheet" href="./css/tasksStyles.css">
+
+  <!-- ------------------- libreria de iconos Fontawesome -------------------- -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- logica de la página -->
+  <script src="./scripts/taks.js"></script>
+
+</head>
+
+<body>
+
+  <!-- cabecera con barra de navegación -->
+  <header class="container">
+    <nav>
+      <h1>To-Do App</h1>
+
+      <div class="user-info">
+        <p>username</p>
+        <div class="user-image"></div>
+        <button id="closeApp"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- carga de tareas -->
+    <form class="nueva-tarea">
+      <input id="nuevaTarea" type="text" placeholder="nueva tarea">
+      <button type="submit"><i class="fa-solid fa-pencil"></i> Crear tarea</button>
+    </form>
+
+    <!-- contenedor vacío para las que pasen a pendientes -->
+    <ul class="tareas-pendientes">
+
+    </ul>
+
+    <h2>Tareas finalizadas <span id="cantidad-finalizadas">0</span></h2>
+    <!-- contenedor vacío para las que pasen a terminadas -->
+    <ul class="tareas-terminadas">
+
+    </ul>
+
+  </main>
+
+
+  <footer>
+    <img src="./assets/DH_Logo_White.png" alt="">
+    <p>| Frontend II Team ♥</p>
+  </footer>
+</body>
+
+</html>
