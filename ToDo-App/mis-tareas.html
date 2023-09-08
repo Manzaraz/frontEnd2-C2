@@ -46,13 +46,30 @@
 
     <!-- contenedor vacío para las que pasen a pendientes -->
     <ul class="tareas-pendientes">
-
+      <li class="tarea">
+        <button class="change" id="01"><i class="fa-regular fa-circle"></i></button>
+        <div class="descripcion">
+          <p class="nombre">Mi tarea</p>
+          <p class="timestamp">01-09-2023</p>
+        </div>
+      </li>
     </ul>
 
     <h2>Tareas finalizadas <span id="cantidad-finalizadas">0</span></h2>
     <!-- contenedor vacío para las que pasen a terminadas -->
     <ul class="tareas-terminadas">
-
+      <li class="tarea">
+        <div class="hecha">
+          <i class="fa-regular fa-circle-check"></i>
+        </div>
+        <div class="descripcion">
+          <p class="nombre">Otra tarea</p>
+          <div class="cambios-estados">
+            <button class="change incompleta" id="002"><i class="fa-solid fa-rotate-left"></i></button>
+            <button class="borrar" id="002"><i class="fa-regular fa-trash-can"></i></button>
+          </div>
+        </div>
+      </li>
     </ul>
 
   </main>

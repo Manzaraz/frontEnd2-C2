@@ -51,8 +51,7 @@ window.addEventListener('load', function () {
                 console.log(response);
 
                 // manejar el error de la request.
-                //  if (response.ok) 
-                return response.json()
+                if (response.ok) return response.json()
 
                 // si llego acá es por que la request no es la correcta y fuerzo el rechazo de la promesa del fetch
                 // return Promise.reject(response)
@@ -67,7 +66,7 @@ window.addEventListener('load', function () {
                     localStorage.setItem("jwt", JSON.stringify(data.jwt))
 
                     // redireccionamos a nuestro dashboard de todo
-                    // location.replace("./mis-tareas.html")
+                    location.replace("./mis-tareas.html")
                 }
 
             })
@@ -85,10 +84,6 @@ window.addEventListener('load', function () {
                     alert("Error del servidor | url no existe")
                 }
             })
-
-
-
     };
-
 
 });
