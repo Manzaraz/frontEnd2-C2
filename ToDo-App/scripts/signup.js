@@ -7,9 +7,6 @@ window.addEventListener('load', function () {
     const password = document.querySelector('#inputPassword');
     const url = "https://todo-api.ctd.academy/v1"
 
-
-
-
     /* -------------------------------------------------------------------------- */
     /*            FUNCIÓN 1: Escuchamos el submit y preparamos el envío           */
     /* -------------------------------------------------------------------------- */
@@ -22,6 +19,7 @@ window.addEventListener('load', function () {
             email: email.value,
             password: password.value
         };
+
         //configuramos la request del Fetch
         const settings = {
             method: 'POST',
@@ -53,6 +51,7 @@ window.addEventListener('load', function () {
             .then(data => {
                 console.log("Promesa cumplida:");
                 console.log(data);
+                console.log(data.jwt);
 
                 if (data.jwt) {
                     //guardo en LocalStorage el objeto con el token
@@ -66,15 +65,16 @@ window.addEventListener('load', function () {
                 console.warn("Promesa rechazada ");
                 console.log(err);
                 if (err.status == 400) {
-                    console.warn("Contraseña incorrecta")
-                    alert("Contraseña incorrecta")
-                } else if (err.status == 404) {
-                    console.warn("El usuario no existe")
-                    alert("El usuario no existe")
-                } else {
-                    console.error("Error del servidor | url no existe")
-                    alert("Error del servidor | url no existe")
+                    console.warn("El usuario ya se encuentra registrado / Alguno de los datos requeridos está incompleto")
+                    alert("El usuario ya se encuentra registrado / Alguno de los datos requeridos está incompleto")
+                } else if (err.status == 500) {
+                    console.warn("Error del servidor")
+                    alert("Error del servidor")
                 }
+                // else {
+                //     console.error("Error del servidor | url no existe")
+                //     alert("Error del servidor | url no existe")
+                // }
             })
     };
 });
