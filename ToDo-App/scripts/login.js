@@ -6,6 +6,38 @@ window.addEventListener('load', function () {
     const url = "https://todo-api.ctd.academy/v1"
     // console.log(form);
 
+    // Aqui en este punto yo me encargo de mandar un a llamar la las funcion normalizar Texto y las validaciones
+    // email.addEventListener("blur", (e) => {
+    //     console.log(e.target);
+    //     const field = e.target
+    //     const fieldValue = field.value
+    //     console.log(fieldValue);
+
+    //     if (fieldValue == 0) {
+    //         field.classList.add("invalid")
+    //         field.nextElementSibling.classList.add("error")
+    //         field.nextElementSibling.textContent = `${field.name} es requerido`
+    //     } else {
+    //         field.classList.remove("invalid")
+    //         field.nextElementSibling.classList.remove("error")
+    //         field.nextElementSibling.textContent = ""
+    //     }
+    // })
+    // email.addEventListener("blur", (e) => valid  arEmail(e))
+    const errors = {
+        email: false,
+        password: false
+    }
+
+    // estes para cuando yo salgo del imput en vivo valido si es un mail o contraseña
+    email.addEventListener("input", e => validarEmail(e))
+    // email.addEventListener("input", validarEmail)
+    password.addEventListener("input", validarContrasenia)
+
+    // Valido que los campos tengan los requierimientos necesarios en tiempo real
+    email.addEventListener("blur", e => isEmpty(`⚠️ Se requiere que ingrese su ${email.name}`, e))
+    password.addEventListener("blur", e => isEmpty(`⚠️ Se requiere que ingrese su ${password.name}`, e))
+
     /* -------------------------------------------------------------------------- */
     /*            FUNCIÓN 1: Escuchamos el submit y preparamos el envío           */
     /* -------------------------------------------------------------------------- */

@@ -29,6 +29,7 @@ nav h1 span {
     font-size: 1rem;
     color: var(--lila);
 }
+
 nav img {
     display: block;
     height: 80%;
@@ -81,7 +82,7 @@ form input:focus {
     border: 2px solid var(--lila);
 }
 
-form button{
+form button {
     background-color: var(--azul);
     color: white;
     padding: .8rem 0;
@@ -89,7 +90,8 @@ form button{
     font-size: 1rem;
     font-weight: 400;
 }
-form button:hover{
+
+form button:hover {
     background-color: var(--azul-hover);
 }
 
@@ -101,6 +103,23 @@ form button:hover{
 .ingresarA a {
     color: var(--lila);
 }
-.ingresarA a:hover{
+
+.ingresarA a:hover {
     color: var(--azul);
+}
+
+/* Estilos para ver la validación */
+form span {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.invalid {
+    border: solid 2px red;
+    box-shadow: 0 0 10px red;
+}
+
+.error {
+    color: red;
+    display: block;
 }

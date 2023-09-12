@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ToDo App</title>
   <link rel="icon" type="image/x-icon" href="./assets/DH_Logo_Black.png">
-  <meta name="description" content="Digital House CTD | Proyecto integrador | FRONTEND II"/>
+  <meta name="description" content="Digital House CTD | Proyecto integrador | FRONTEND II" />
 
 
   <!-- ---------------- estilos compartidos de login y signup ---------------- -->
@@ -35,10 +35,19 @@
         <p class="rounded">Login</p>
       </div>
 
-      <label>Email</label>
-      <input id="inputEmail" type="text">
-      <label>Contraseña</label>
-      <input id="inputPassword" type="password">
+      <label for="inputEmail">Email</label>
+      <!-- <input id="inputEmail" type="text" name="Correo Electrónico"> -->
+      <input id="inputEmail" type="text" name="email">
+      <span></span>
+      <!-- <label for="inputEmail">
+        Email
+        <input id="inputEmail" type="text" name="Correo Electrónico">
+        <span></span>
+      </label> -->
+
+      <label for="inputPassword">Contraseña</label>
+      <input id="inputPassword" type="password" name="Contraseña">
+      <span></span>
 
       <button type="submit">Ingresar</button>
 
