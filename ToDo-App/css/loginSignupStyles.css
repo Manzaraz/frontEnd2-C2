@@ -95,6 +95,28 @@ form button:hover {
     background-color: var(--azul-hover);
 }
 
+/* Agrego clases para activar el spinner */
+form button:active {
+    background-color: var(--azul-hover);
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.01);
+    transform: scale(99%);
+}
+
+form button [disabled] {
+    background-color: rgb(189, 189, 189);
+}
+
+form button img {
+    width: 40px;
+}
+
+.oculto {
+    display: none;
+}
+
+/* Fin de las clases para activar el spinner */
+
+
 .ingresarA {
     padding: 1rem 0;
     text-align: center;

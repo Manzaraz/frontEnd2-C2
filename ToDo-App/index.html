@@ -13,6 +13,11 @@
   <!-- ---------------- estilos compartidos de login y signup ---------------- -->
   <link rel="stylesheet" href="./css/loginSignupStyles.css">
 
+  <!-- esto es para cargar el manifest json de mi pwa -->
+  <link rel="manifest" href="manifest.json" />
+
+
+
   <!-- ---------------------- logica aplicada en login ----------------------- -->
   <script src="./scripts/utils.js"></script>
   <script src="./scripts/login.js"></script>
@@ -49,7 +54,10 @@
       <input id="inputPassword" type="password" name="Contraseña">
       <span></span>
 
-      <button type="submit">Ingresar</button>
+      <button type="submit">
+        <img class="oculto" src="./assets/loader.gif" alt="Cargando...">
+        <span>Ingresar</span>
+      </button>
 
     </form>
 
@@ -58,6 +66,17 @@
     </div>
 
   </div>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker
+          .register("/serviceWorker.js")
+          .then(res => console.log("service worker registered"))
+          .catch(err => console.log("service worker not registered", err))
+      })
+    }
+  </script>
 
 </body>
 

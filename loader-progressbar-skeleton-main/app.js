@@ -4,13 +4,13 @@ const btn = document.querySelector('button');
 const btnImg = document.querySelector('button img');
 const btnTexto = document.querySelector('button span');
 
-btn.addEventListener('click', ()=>{
+btn.addEventListener('click', () => {
     console.log("click");
     // mostramos el spinner
     invertirClases();
-    btn.setAttribute('disabled','')
+    btn.setAttribute('disabled', '')
     // despues de de 3 segundos invertimos la situacion
-    setTimeout(()=>{
+    setTimeout(() => {
         invertirClases()
         btn.removeAttribute('disabled')
     }, 5000)
@@ -31,35 +31,35 @@ let porcentaje = 0;
 // mostramos la barra en el porcentaje incial 👇
 relleno.style.width = `${porcentaje}%`
 
-const intervalo = setInterval(()=>{
-    if(porcentaje<101){
+const intervalo = setInterval(() => {
+    if (porcentaje < 100) {
         porcentaje++;
         relleno.style.width = `${porcentaje}%`
-    }else{
+    } else {
         // frenamos el intervalo
         clearInterval(intervalo)
     }
 
     console.log(porcentaje);
-},100);
+}, 100);
 
 
 /* -------------------------------- skeleton -------------------------------- */
 
 const apiUrl = 'https://pokeapi.co/api/v2/pokemon/pikachu';
-const skeleton = document.querySelector('.skeleton');
 const pokemon = document.querySelector('#pokemon')
+const skeleton = document.querySelector('.skeleton');
 
 fetch(apiUrl)
     .then(res => res.json())
     .then(info => {
-            console.log(info.name)
-            console.log(info.sprites.front_default)
-            console.log(info.types[0].type.name)
-            // removemos la tarjeta existente
-            skeleton.remove()
-            // insertamos la tarjeta
-            pokemon.innerHTML += componenteTarjeta(info.name, info.sprites.front_default,info.types[0].type.name)
+        console.log(info.name)
+        console.log(info.sprites.front_default)
+        console.log(info.types[0].type.name)
+        // removemos la tarjeta existente
+        skeleton.remove()
+        // insertamos la tarjeta
+        pokemon.innerHTML += componenteTarjeta(info.name, info.sprites.front_default, info.types[0].type.name)
 
     })
 

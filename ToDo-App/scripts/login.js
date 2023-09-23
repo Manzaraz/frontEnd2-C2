@@ -6,24 +6,13 @@ window.addEventListener('load', function () {
     const url = "https://todo-api.ctd.academy/v1"
     // console.log(form);
 
-    // Aqui en este punto yo me encargo de mandar un a llamar la las funcion normalizar Texto y las validaciones
-    // email.addEventListener("blur", (e) => {
-    //     console.log(e.target);
-    //     const field = e.target
-    //     const fieldValue = field.value
-    //     console.log(fieldValue);
+    // Agrego los selectores del la img del boton y del span para animarlos
+    const btn = document.querySelector('button');
+    const btnImg = document.querySelector('button img');
+    const btnTexto = document.querySelector('button span');
 
-    //     if (fieldValue == 0) {
-    //         field.classList.add("invalid")
-    //         field.nextElementSibling.classList.add("error")
-    //         field.nextElementSibling.textContent = `${field.name} es requerido`
-    //     } else {
-    //         field.classList.remove("invalid")
-    //         field.nextElementSibling.classList.remove("error")
-    //         field.nextElementSibling.textContent = ""
-    //     }
-    // })
-    // email.addEventListener("blur", (e) => valid  arEmail(e))
+    // Aqui en este punto yo me encargo de mandar un a llamar la las funcion normalizar Texto y las validaciones
+
     const errors = {
         email: false,
         password: false
@@ -43,6 +32,10 @@ window.addEventListener('load', function () {
     /* -------------------------------------------------------------------------- */
     form.addEventListener('submit', function (event) {
         event.preventDefault()
+
+        // mostramos el spinner
+        invertirClases()
+        btn.removeAttribute("disabled")
 
         //Creamos el cuerpo de la request (petición al servidor)
         const payload = {
@@ -70,6 +63,13 @@ window.addEventListener('load', function () {
     });
 
 
+    // Creo una función para invertir las calses relacionadas con las modificaciones del botón submit del formualrio
+    function invertirClases() {
+        btnImg.classList.toggle("oculto")
+        btnTexto.classList.toggle("oculto")
+    }
+
+
     /* -------------------------------------------------------------------------- */
     /*                     FUNCIÓN 2: Realizar el login [POST]                    */
     /* -------------------------------------------------------------------------- */
@@ -81,6 +81,10 @@ window.addEventListener('load', function () {
         fetch(`${url}/users/login`, settings)
             .then(response => {
                 console.log(response);
+
+                // al hacer el fetch y empezar a trabajar la respuesta invertimos la situacion
+                invertirClases()
+                btn.removeAttribute("disabled")
 
                 // manejar el error de la request.
                 if (response.ok) return response.json()

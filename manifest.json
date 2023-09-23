@@ -1,0 +1,21 @@
+{
+    "name": "ToDoManzi",
+    "short_name": "miToDo",
+    "start_url": "index.html",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#fdfdfd",
+    "theme_color": "#db4938",
+    "icons": [
+        {
+            "src": "/assets/icon.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/assets/loader.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}

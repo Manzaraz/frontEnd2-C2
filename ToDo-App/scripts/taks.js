@@ -9,6 +9,8 @@ if (!localStorage.jwt) {
 
 /* ------ comienzan las funcionalidades una vez que carga el documento ------ */
 window.addEventListener('load', function () {
+  /* ------------------------- iniciamos libreria AOS ------------------------- */
+  AOS.init();
 
   /* ---------------- variables globales y llamado a funciones ---------------- */
   const url = "https://todo-api.ctd.academy/v1"
@@ -29,12 +31,34 @@ window.addEventListener('load', function () {
   /* -------------------------------------------------------------------------- */
 
   btnCerrarSesion.addEventListener('click', function () {
-    const cerrarSesion = confirm("¿Desea cerrar sesión?");
-    console.warn(cerrarSesion);
-    if (cerrarSesion) {
-      localStorage.clear()
-      location.replace("./index.html")
-    }
+    // const cerrarSesion = confirm("¿Desea cerrar sesión?");
+    // console.warn(cerrarSesion);
+    // if (cerrarSesion) {
+    //   localStorage.clear()
+    //   location.replace("./index.html")
+    // }
+
+    Swal.fire({
+      title: '¿Desea cerrar sesión?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setTimeout(() => {
+          Swal.fire(
+            '¡Hasta luego!',
+            'Te esperamos pronto.',
+            'success'
+          )
+          localStorage.clear()
+          location.replace("./index.html")
+        }, 1000);
+      }
+    })
 
   });
 
@@ -153,7 +177,7 @@ window.addEventListener('load', function () {
 
         //lo mandamos al listado de tareas completas
         tareasTerminadas.innerHTML += `
-          <li class="tarea">
+          <li class="tarea" data-aos="flip-down" data-aos-duration="1500">
             <div class="hecha">
               <i class="fa-regular fa-circle-check"></i>
             </div>
@@ -169,7 +193,7 @@ window.addEventListener('load', function () {
       } else {
         //lo mandamos al listado de tareas sin terminar
         tareasPendientes.innerHTML += `
-        <li class="tarea">
+        <li class="tarea" data-aos="flip-up" data-aos-duration="1500">
           <button class="change" id="${tarea.id}"><i class="fa-regular fa-circle"></i></button>
           <div class="descripcion">
             <p class="nombre">${tarea.description}</p>
@@ -246,22 +270,40 @@ window.addEventListener('load', function () {
     btnBorrarTarea.forEach(boton => {
       //a cada boton de borrado le asignamos la funcionalidad
       boton.addEventListener('click', function (event) {
-        const id = event.target.id;
-        const url = `${urlTareas}/${id}`
 
-        const settingsCambio = {
-          method: 'DELETE',
-          headers: {
-            "Authorization": token,
+        Swal.fire({
+          title: '¿Confirma eliminar la tarea?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Confirmar',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            const id = event.target.id;
+            const url = `${urlTareas}/${id}`
+
+            const settingsCambio = {
+              method: 'DELETE',
+              headers: {
+                "Authorization": token,
+              }
+            }
+            fetch(url, settingsCambio)
+              .then(response => {
+                console.log("Borrando tarea...");
+                console.log(response.status);
+                //vuelvo a consultar las tareas actualizadas y pintarlas nuevamente en pantalla
+                consultarTareas();
+              })
+
+            Swal.fire(
+              'Tarea eliminada!',
+            )
           }
-        }
-        fetch(url, settingsCambio)
-          .then(response => {
-            console.log("Borrando tarea...");
-            console.log(response.status);
-            //vuelvo a consultar las tareas actualizadas y pintarlas nuevamente en pantalla
-            consultarTareas();
-          })
+        })
       })
     });
 
