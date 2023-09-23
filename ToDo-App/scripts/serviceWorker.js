@@ -12,7 +12,7 @@ const assets = [
     "/scripts/tasks.js",
     "/scripts/utils.js",
     "/assets/icon.png",
-    "/assets/loader.gif"
+    "/assets/loader.gif",
 ]
 
 self.addEventListener("install", installEvent => {

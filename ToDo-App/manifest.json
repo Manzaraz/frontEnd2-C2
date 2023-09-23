@@ -11,11 +11,6 @@
             "src": "/assets/icon.png",
             "type": "image/png",
             "sizes": "512x512"
-        },
-        {
-            "src": "/assets/loader.png",
-            "type": "image/png",
-            "sizes": "512x512"
         }
     ]
 }
