@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    padding: 2rem;
+}
+
+body{
+    font-family:system-ui,-apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+section{
+    background-color: rgb(236, 236, 236);
+    padding: 4rem;
+}
+.bg-dark{
+    background-color: rgb(29, 29, 29);
+    color: rgb(241, 241, 241);
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 4rem;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    background-color: white;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: rgb(29, 29, 29);
+    cursor: pointer;
+}
+button:hover{
+    background-color: rgb(250, 250, 250);
+}
+button:active{
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.01);
+    transform: scale(99%);
+}
+button[disabled]{
+    background-color: rgb(189, 189, 189);
+}
+button img{
+    width: 40px;
+}
+
+.oculto{
+    display: none;
+}
+
+#barra{
+    margin: 1rem 0;
+    background-color: white;
+    width: 100%;
+    height: 1rem;
+}
+#relleno{
+    background-color: greenyellow;
+    height: 100%;
+    width: 0%;
+}
+
+article{
+    width: 15rem;
+    padding: 2rem 1rem;
+    margin: 1rem auto;
+    background-color: rgb(255, 250, 98);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border-radius: 1rem;
+}
+
+article img{
+    width: 80px;
+}
+
+.skeleton{
+    background-color: rgb(188, 188, 188);
+    animation: titilar 2s infinite ease;
+}
+.skeleton h2{
+    color: white;
+    background-color: white;
+}
+.skeleton h6{
+    color: white;
+    background-color: white;
+}
+
+@keyframes titilar {
+    0%{
+        opacity: .9;
+    }
+    50%{
+        opacity: .4;
+    }
+    100%{
+        opacity: .9;
+    }
+}
